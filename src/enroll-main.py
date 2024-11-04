@@ -16,10 +16,11 @@ def enroll(class_amt, timeslot):
     # Log into RIT Account
     username = driver.find_element(By.XPATH, '//*[@id="ritUsername"]')
     username.send_keys(os.getenv("USERNAME"))
+    time.sleep(.025)
 
     password = driver.find_element(By.XPATH, '//*[@id="ritPassword"]')
     password.send_keys(os.getenv("PASSWORD"))
-    time.sleep(.15)
+    time.sleep(.075)
 
     login = driver.find_element(By.XPATH, '//*[@name="_eventId_proceed"]')
     login.click()
@@ -40,27 +41,29 @@ def enroll(class_amt, timeslot):
 
     # Reload the page at enroll time
     driver.refresh()
-    time.sleep(2.5)  # Allow the page to fully reload
+    time.sleep(2)  # Allow the page to fully reload
 
     for i in range(0, class_amt):
         checkbox = driver.find_element(By.ID, f"DERIVED_REGFRM1_SSR_SELECT${i}")
         checkbox.click()
-        time.sleep(0.3)  # Small delay for stability
+        time.sleep(0.075)  # Very small delay for stability
 
     # Click the enroll button
     enroll_button = driver.find_element(By.ID, "DERIVED_SSR_FL_SSR_VALIDATE_FL") # TODO: set to the checkout button
     enroll_button.click()
-    time.sleep(2.5)
+    time.sleep(1)
 
     # Accept classes
     # accept_button = driver.find_element(By.ID, "#ICYes") # TODO: Uncomment
     # accept_button.click()
 
-    print("Completed.")
-    while 1:
-        time.sleep(10)
+    while True:
+        input("Close Browser? ")
+        print("Completed.")
+        driver.quit()
+        return
 
 if __name__ == "__main__":
-    enroll_time = "11:59:25"
+    enroll_time = "09:30:00"
     num_classes = 7
     enroll(num_classes, enroll_time)
