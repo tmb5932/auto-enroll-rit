@@ -47,3 +47,4 @@ Please consult your institution’s policies before considering any form of auto
 
 Use this script responsibly and in accordance with your institution’s policies. This tool is shared strictly for educational and personal use, and I am not responsible for any misuse or potential policy violations.
 
+Created by Travis Brown (https://github.com/tmb5932)
