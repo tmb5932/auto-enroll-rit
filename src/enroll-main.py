@@ -57,11 +57,10 @@ def enroll(class_amt, timeslot):
     # accept_button = driver.find_element(By.ID, "#ICYes") # TODO: Uncomment
     # accept_button.click()
 
-    while True:
-        input("Close Browser? ")
-        print("Completed.")
-        driver.quit()
-        return
+    input("Close Browser? ")
+    print("Completed.")
+    driver.quit()
+    return
 
 if __name__ == "__main__":
     enroll_time = "09:30:00"
