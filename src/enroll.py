@@ -65,6 +65,6 @@ def enroll(class_amt, timeslot):
         driver.quit()
 
 if __name__ == "__main__":
-    enroll_time = "14:38:00"
-    num_classes = 1
+    enroll_time = "09:30:00"
+    num_classes = 7
     enroll(num_classes, enroll_time)
