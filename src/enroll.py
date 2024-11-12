@@ -48,13 +48,13 @@ def enroll(class_amt, timeslot):
 
         # Click the enroll button
         WebDriverWait(driver, 5).until(
-            ec.element_to_be_clickable((By.ID, "DERIVED_SSR_FL_SSR_VALIDATE_FL")) # TODO: set to the checkout button
+            ec.element_to_be_clickable((By.ID, "DERIVED_SSR_FL_SSR_ENROLL_FL"))
         ).click()
 
         # Accept classes
-        # WebDriverWait(driver, 5).until(
-        #     ec.element_to_be_clickable((By.ID, "#ICYes")) # TODO: Uncomment
-        # ).click()
+        WebDriverWait(driver, 5).until(
+            ec.element_to_be_clickable((By.ID, "#ICYes"))
+        ).click()
         print("Enrollment process complete.")
     except Exception as e:
         print(f"An error has occurred: {e}")
@@ -65,6 +65,6 @@ def enroll(class_amt, timeslot):
         driver.quit()
 
 if __name__ == "__main__":
-    enroll_time = "09:30:00"
-    num_classes = 7
+    enroll_time = "14:38:00"
+    num_classes = 1
     enroll(num_classes, enroll_time)
