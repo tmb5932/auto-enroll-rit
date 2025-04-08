@@ -33,13 +33,16 @@ def enroll(class_amt, timeslot):
             ec.presence_of_element_located((By.XPATH, '//*[@id="SCC_LO_FL_WRK_SCC_VIEW_BTN$2"]'))
         ).click()
 
-        print(f"Waiting for {timeslot}...")
+        if datetime.now().strftime("%H:%M:%S") < timeslot:
+            print(f"Waiting for {timeslot}...")
 
-        while datetime.now().strftime("%H:%M:%S") != timeslot:
-            time.sleep(1)
+            while datetime.now().strftime("%H:%M:%S") < timeslot:
+                time.sleep(1)
 
-        # Reload the page at enroll time
-        driver.refresh()
+            # Reload the page at enroll time
+            driver.refresh()
+        else:
+            time.sleep(.25)
 
         for i in range(0, class_amt):
             WebDriverWait(driver, 5).until(
@@ -56,15 +59,16 @@ def enroll(class_amt, timeslot):
             ec.element_to_be_clickable((By.ID, "#ICYes"))
         ).click()
         print("Enrollment process complete.")
+
     except Exception as e:
-        print(f"An error has occurred: {e}")
-        print("Element Not found.")
+        print(e)
+        print("Error Occurred.")
         print("Enrollment process failed...")
     finally:
         input("Press Enter to Close Browser: ")
         driver.quit()
 
 if __name__ == "__main__":
-    enroll_time = "09:30:00"
-    num_classes = 7
+    enroll_time = "14:00:00"
+    num_classes = 6
     enroll(num_classes, enroll_time)
